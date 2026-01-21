@@ -542,7 +542,7 @@ const unit1LessonData = {
                     <div class="pdf-container" style="margin-bottom:20px; border-radius:15px; overflow:hidden; border:1px solid #e2e8f0; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);">
                         <iframe src="1단원/여행에서_만난_나_1차시_활동지.pdf" style="width:100%; height:600px; border:none;"></iframe>
                     </div>
-                    <a href="1단원/여행에서_만난_나_1차시_활동지.pdf" class="download-link" onclick="handleTrackedDownload(event, \'1-3\')" download style="display:inline-block; background:var(--primary); color:white; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:bold;">⬇️ PDF로 소장하기</a>
+                    <a href="1단원/여행에서_만난_나_1차시_활동지.pdf" class="download-link" onclick="handleTrackedDownload" download style="display:inline-block; background:var(--primary); color:white; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:bold;">⬇️ PDF로 소장하기</a>
                 </div>`,
                 hideBoard: true
             },
@@ -570,7 +570,7 @@ const unit1LessonData = {
                     <div class="pdf-container" style="margin-bottom:20px; border-radius:15px; overflow:hidden; border:1px solid #e2e8f0; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);">
                         <iframe src="1단원/여행에서_만난_나_활동지.pdf" style="width:100%; height:600px; border:none;"></iframe>
                     </div>
-                    <a href="1단원/여행에서_만난_나_활동지.pdf" class="download-link" onclick="handleTrackedDownload(event, \'2-5\')" download style="display:inline-block; background:var(--primary); color:white; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:bold;">⬇️ PDF로 소장하기</a>
+                    <a href="1단원/여행에서_만난_나_활동지.pdf" class="download-link" onclick="handleTrackedDownload" download style="display:inline-block; background:var(--primary); color:white; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:bold;">⬇️ PDF로 소장하기</a>
                 </div>`,
                 hideBoard: true
             },
@@ -592,7 +592,7 @@ const unit1LessonData = {
                     <div class="pdf-container" style="margin-bottom:20px; border-radius:15px; overflow:hidden; border:1px solid #e2e8f0; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);">
                         <iframe src="1단원/여행_발췌독_연계_활동지_3차시.pdf" style="width:100%; height:600px; border:none;"></iframe>
                     </div>
-                    <a href="1단원/여행_발췌독_연계_활동지_3차시.pdf" class="download-link" onclick="handleTrackedDownload(event, \'3-1\')" download style="display:inline-block; background:var(--primary); color:white; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:bold;">⬇️ PDF로 소장하기</a>
+                    <a href="1단원/여행_발췌독_연계_활동지_3차시.pdf" class="download-link" onclick="handleTrackedDownload" download style="display:inline-block; background:var(--primary); color:white; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:bold;">⬇️ PDF로 소장하기</a>
                 </div>`,
                 hideBoard: true
             },
@@ -608,3 +608,4 @@ const unit1LessonData = {
         ]
     }
 };
+
