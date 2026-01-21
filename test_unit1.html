@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script>
+        const testData = {
+            id: "1-1",
+            icon: "🌍",
+            title: "1. 나에게 여행이란?",
+            content: "<h3>브레인스토밍: 여행의 정의</h3><p>친구들이 생각하는 '여행'은 어떤 단어로 표현될까요?</p>"
+        };
+
+        document.getElementById('test').innerHTML = testData.content;
+        console.log('testData:', testData);
+        console.log('content:', testData.content);
+    </script>
+</body>
+
+</html>
