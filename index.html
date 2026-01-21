@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행과 우리: 나를 찾아 떠나는 수업</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN (Hidden by default) -->
+    <div id="login-screen" class="login-container hidden">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fa-solid fa-paper-plane"></i>
+                <h1>여행과 우리</h1>
+                <p>온라인 학습 포털</p>
+            </div>
+            <div class="input-group">
+                <label>포털 아이디 (ID)</label>
+                <input type="text" id="login-id" placeholder="ID를 입력하세요"
+                    onkeypress="if(event.key==='Enter') checkLogin()">
+            </div>
+            <div class="input-group">
+                <label>비밀번호 (PW)</label>
+                <input type="password" id="login-pw" placeholder="비밀번호를 입력하세요"
+                    onkeypress="if(event.key==='Enter') checkLogin()">
+            </div>
+            <button class="login-btn" onclick="checkLogin()">로그인</button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER (Visible by default) -->
+    <div id="app" class="app-container">
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>여행과 우리</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="switchTab('home')">
+                    <i class="fa-solid fa-house"></i> <span>홈 (과목소개)</span>
+                </li>
+                <li onclick="switchTab('unit1')">
+                    <i class="fa-solid fa-user-astronaut"></i> <span>Unit 1. 나</span>
+                </li>
+                <li onclick="switchTab('unit2')">
+                    <i class="fa-solid fa-handshake"></i> <span>Unit 2. 너</span>
+                </li>
+                <li onclick="switchTab('unit3')">
+                    <i class="fa-solid fa-users"></i> <span>Unit 3. 우리</span>
+                </li>
+                <li onclick="switchTab('unit4')">
+                    <i class="fa-solid fa-book-open"></i> <span>Unit 4. 기록</span>
+                </li>
+                <li onclick="switchTab('unit5')">
+                    <i class="fa-solid fa-folder-open"></i> <span>Unit 5. 자료실</span>
+                </li>
+            </ul>
+            <div class="user-profile">
+                <div class="avatar" id="user-avatar">👩‍🎓</div>
+                <div class="user-info">
+                    <p class="name" id="user-name">학생 모드</p>
+                    <p class="role" id="user-role">고2 수강생</p>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content-area">
+
+            <!-- HOME SECTION (Intro) -->
+            <!-- ... (omitted for brevity, assume existing) ... -->
+
+            <!-- (Existing Sections...) -->
+
+
+            <section id="home" class="tab-content active">
+                <header class="hero-header" style="padding: 2rem; margin-bottom: 2rem;">
+                    <h1>여행과 우리 🌏</h1>
+                    <div style="position: absolute; top: 2rem; right: 2rem; display: flex; gap: 10px;">
+                        <button onclick="showLogin()" id="top-login-btn"
+                            style="background: white; color: var(--primary); border: 1px solid var(--primary); padding: 8px 16px; border-radius: 20px; font-family:'Jua'; cursor: pointer; transition: all 0.3s ease;">
+                            <i class="fa-solid fa-key"></i> 로그인
+                        </button>
+                    </div>
+                    <p class="subtitle">나를 찾아 떠나는 융합 프로젝트 수업</p>
+
+                    <!-- Sub Navigation for Syllabus -->
+                    <div class="sub-nav">
+                        <button class="sub-nav-btn active" onclick="switchIntroTab('0')" data-target="0">과목 소개</button>
+                        <button class="sub-nav-btn" onclick="switchIntroTab('1')" data-target="1">Unit 1. 나</button>
+                        <button class="sub-nav-btn" onclick="switchIntroTab('2')" data-target="2">Unit 2. 너</button>
+                        <button class="sub-nav-btn" onclick="switchIntroTab('3')" data-target="3">Unit 3. 우리</button>
+                        <button class="sub-nav-btn" onclick="switchIntroTab('4')" data-target="4">Unit 4. 기록</button>
+                        <button class="sub-nav-btn" onclick="switchIntroTab('5')" data-target="5">Unit 5. 자료실</button>
+                    </div>
+                </header>
+
+                <!-- Intro Tab 0: Course Intro -->
+                <div id="intro-tab-0" class="intro-tab-content active">
+                    <div class="content-header color-0">
+                        <h3>Welcome! 수업 소개</h3>
+                    </div>
+                    <div class="intro-box">
+                        <h4>💡 과목 성격</h4>
+                        <p>
+                            이 과목은 <strong>'여행'</strong>이라는 삶의 실천적 경험을 중심으로 한 <strong>융합형 선택 과목</strong>입니다.<br>
+                            과거의 여행을 회상하거나, 상상 속 여행을 계획하며 <strong>자아 성찰</strong>, <strong>타인 이해</strong>, <strong>공동체
+                                감수성</strong>을 기릅니다.<br>
+                            단순한 정보 습득이 아닌, <strong>지리, 문학, 예술, 진로</strong>가 어우러진 프로젝트 수업입니다.
+                        </p>
+                    </div>
+                    <div class="intro-box">
+                        <h4>🎯 수업 목표 (Core Competencies)</h4>
+                        <ul class="intro-list">
+                            <li>🧳 <strong>자아 성찰:</strong> 여행 경험을 통해 감정과 정체성을 되돌아봅니다.</li>
+                            <li>🤝 <strong>문화 다양성:</strong> 낯선 문화를 존중하고 이해하는 열린 태도를 배웁니다.</li>
+                            <li>👫 <strong>소통과 협력:</strong> 공동체 안에서 갈등을 해결하고 함께 성장합니다.</li>
+                            <li>🧭 <strong>진로 설계:</strong> 여행 과정을 진로 탐색과 연결하여 삶을 주체적으로 기획합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="learning-journey">
+                        <h4>🚀 한 학기 여정</h4>
+                        <div class="journey-steps">
+                            <span class="j-step">계획</span> ➝ <span class="j-step">탐구</span> ➝ <span
+                                class="j-step">기록</span> ➝ <span class="j-step">표현</span> ➝ <span
+                                class="j-step">공유</span> ➝ <span class="j-step">성찰</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intro Tab 1: Unit 1 Info -->
+                <div id="intro-tab-1" class="intro-tab-content">
+                    <div class="content-header color-1">
+                        <h3>Unit 1. 여행에서 만난 나 🧳</h3>
+                    </div>
+                    <div class="learning-card c1">
+                        <div class="card-label">✨ 핵심 아이디어 & 성취기준</div>
+                        <p class="std-text">
+                            여행의 의미를 탐색하고, 경험했던 여행을 회상함으로써 '나'를 돌아봐요.<br>
+                            여행 목적과 동기를 설정하고 구체적인 계획(일정, 예산)을 수립하며 주체적인 사고력을 기릅니다.
+                        </p>
+                    </div>
+                    <div class="timeline-box">
+                        <div class="timeline-title">📆 수업 흐름 (1~6차시)</div>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <span class="step-time">도입</span>
+                                <span class="step-desc">여행이란 무엇인가? 에세이 독서 및 감상 공유</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">전개</span>
+                                <span class="step-desc">변화한 나의 경험 회상하기, 인생 여행 그래프 그리기</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">활동</span>
+                                <span class="step-desc">나만의 여행 계획 수립 (장소, 동기, 여정) 및 발표</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">정리</span>
+                                <span class="step-desc">여행 계획을 일지(Journal) 형식으로 정리하기</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activity-box">
+                        <div class="box-title">🔥 수행 평가 과제</div>
+                        <ul class="activity-list">
+                            <li>여행 계획서 작성 (창의적 일정)</li>
+                            <li>여행 일지 / 감정 에세이 작성</li>
+                        </ul>
+                    </div>
+                    <div class="start-btn-container" style="text-align: center; margin-top: 2rem;">
+                        <button class="start-unit-btn" onclick="switchTab('unit1', 'grid')"
+                            style="background: var(--primary); color: white; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-size: 1.3rem; cursor: pointer; font-family: 'Jua', sans-serif; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; margin: 0 auto; justify-content: center;">
+                            <span>1단원 수업 시작하기</span>
+                            <i class="fa-solid fa-circle-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Intro Tab 2: Unit 2 Info -->
+                <div id="intro-tab-2" class="intro-tab-content">
+                    <div class="content-header color-2">
+                        <h3>Unit 2. 여행에서 만난 너 🤝</h3>
+                    </div>
+                    <div class="learning-card c2">
+                        <div class="card-label">✨ 핵심 아이디어 & 성취기준</div>
+                        <p class="std-text">
+                            낯선 문화를 편견 없이 바라보고, 타인의 삶을 통해 나를 성찰합니다.<br>
+                            다양한 지역과 문화(음식, 언어, 음악)를 조사하며 다양성을 이해하고 세계 시민으로서의 감수성을 키웁니다.
+                        </p>
+                        <div class="keywords" style="margin-top: 10px; font-weight: 600; color: #0984e3;">
+                            #문화상대주의 #공감 #편견깨기
+                        </div>
+                    </div>
+                    <div class="timeline-box">
+                        <div class="timeline-title">📆 수업 흐름 (7~12차시)</div>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <span class="step-time">탐구</span>
+                                <span class="step-desc">여행지 인문·자연환경 탐색 및 문화 요소(축제, 식문화) 조사</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">체험</span>
+                                <span class="step-desc">현지인 인터뷰 질문 만들기 및 역할극(Role-play) 진행</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">공감</span>
+                                <span class="step-desc">'너를 통해 알게 된 나' - 타문화 인물 시점의 일기/편지 쓰기</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activity-box">
+                        <div class="box-title">🔥 수행 평가 과제</div>
+                        <ul class="activity-list">
+                            <li>문화 요소 조사 및 시각 자료 제작</li>
+                            <li>역할극 참여 및 공감적 표현</li>
+                        </ul>
+                    </div>
+                    <div class="start-btn-container" style="text-align: center; margin-top: 2rem;">
+                        <button class="start-unit-btn" onclick="switchTab('unit2', 'grid')"
+                            style="background: #74b9ff; color: white; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-size: 1.3rem; cursor: pointer; font-family: 'Jua', sans-serif; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; margin: 0 auto; justify-content: center;">
+                            <span>2단원 수업 시작하기</span>
+                            <i class="fa-solid fa-circle-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Intro Tab 3: Unit 3 Info -->
+                <div id="intro-tab-3" class="intro-tab-content">
+                    <div class="content-header color-3">
+                        <h3>Unit 3. 여행에서 만난 우리 👫</h3>
+                    </div>
+                    <div class="learning-card c3">
+                        <div class="card-label">✨ 핵심 아이디어 & 성취기준</div>
+                        <p class="std-text">
+                            여행 중 겪는 갈등과 화해를 통해 진정한 관계와 공동체의 의미를 배웁니다.<br>
+                            공동체 속에서의 협력과 책임의 가치를 깨달으며 소통과 배려를 실천합니다.
+                        </p>
+                        <div class="keywords" style="margin-top: 10px; font-weight: 600; color: #00b894;">
+                            #관계 #갈등해결 #협력 #공동체
+                        </div>
+                    </div>
+                    <div class="timeline-box">
+                        <div class="timeline-title">📆 수업 흐름 (13~18차시)</div>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <span class="step-time">분석</span>
+                                <span class="step-desc">동행 유형별(혼자/친구/가족) 특징 비교, '망한 여행' 사례 분석</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">토의</span>
+                                <span class="step-desc">갈등 해결 전략 세우기, 독서 토론으로 생각 나누기</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">설계</span>
+                                <span class="step-desc">모둠별 공동 여행 코스 기획 및 역할 분담 프로젝트</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activity-box">
+                        <div class="box-title">🔥 수행 평가 과제</div>
+                        <ul class="activity-list">
+                            <li>조별 여행 기획 및 협력 태도</li>
+                            <li>갈등 해결 에세이 / 공동체 활동지</li>
+                        </ul>
+                    </div>
+                    <div class="start-btn-container" style="text-align: center; margin-top: 2rem;">
+                        <button class="start-unit-btn" onclick="switchTab('unit3', 'grid')"
+                            style="background: #55efc4; color: white; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-size: 1.3rem; cursor: pointer; font-family: 'Jua', sans-serif; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; margin: 0 auto; justify-content: center;">
+                            <span>3단원 수업 시작하기</span>
+                            <i class="fa-solid fa-circle-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Intro Tab 4: Unit 4 Info -->
+                <div id="intro-tab-4" class="intro-tab-content">
+                    <div class="content-header color-4">
+                        <h3>Unit 4. 여행 이후의 나 📖</h3>
+                    </div>
+                    <div class="learning-card c4">
+                        <div class="card-label">✨ 핵심 아이디어 & 성취기준</div>
+                        <p class="std-text">
+                            여행 경험을 기록(책)으로 남겨 사회와 소통해요.<br>
+                            회고와 성찰을 통해 자신의 진로와 삶의 방향성을 구체화합니다.
+                        </p>
+                    </div>
+                    <div class="timeline-box">
+                        <div class="timeline-title">📆 수업 흐름 (19~30차시)</div>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <span class="step-time">기획</span>
+                                <span class="step-desc">진로와 연계된 여행책 구상, 목차 및 초고 작성</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">제작</span>
+                                <span class="step-desc">책 표지/내지 디자인, 서평 작성 및 상호 피드백</span>
+                            </div>
+                            <div class="timeline-step">
+                                <span class="step-time">전시</span>
+                                <span class="step-desc">'독립서점' 부스 운영 및 회고 에세이 발표회</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activity-box">
+                        <div class="box-title">🔥 수행 평가 과제</div>
+                        <ul class="activity-list">
+                            <li>나만의 여행책 완성본 (창의성/표현력)</li>
+                            <li>독립서점 전시 발표 및 서평</li>
+                        </ul>
+                    </div>
+                    <div class="start-btn-container" style="text-align: center; margin-top: 2rem;">
+                        <button class="start-unit-btn" onclick="switchTab('unit4')"
+                            style="background: #a29bfe; color: white; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-size: 1.3rem; cursor: pointer; font-family: 'Jua', sans-serif; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; margin: 0 auto; justify-content: center;">
+                            <span>4단원 수업 시작하기</span>
+                            <i class="fa-solid fa-circle-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Intro Tab 5: Unit 5 Info -->
+                <div id="intro-tab-5" class="intro-tab-content">
+                    <div class="content-header color-4"
+                        style="background: linear-gradient(135deg, #a5b1c2 0%, #4b6584 100%);">
+                        <h3>Unit 5. 학습 자료실 📚</h3>
+                    </div>
+                    <div class="learning-card" style="border-left: 5px solid #4b6584;">
+                        <div class="card-label" style="color: #4b6584;">✨ 자료실 소개</div>
+                        <p class="std-text">
+                            수업에 필요한 다양한 참고 자료와 양식을 다운로드할 수 있는 공간입니다.<br>
+                            여행 관련 도서 추천 목록, 활동지 양식, 참고 영상 링크 등을 확인하세요.
+                        </p>
+                    </div>
+                    <div class="start-btn-container" style="text-align: center; margin-top: 2rem;">
+                        <button class="start-unit-btn" onclick="switchTab('unit5')"
+                            style="background: #4b6584; color: white; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-size: 1.3rem; cursor: pointer; font-family: 'Jua', sans-serif; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; margin: 0 auto; justify-content: center;">
+                            <span>자료실 바로가기</span>
+                            <i class="fa-solid fa-folder-open"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRAVEL TEST MODAL -->
+            <div id="test-modal" class="modal hidden">
+                <div class="modal-content test-content">
+                    <span class="close-modal" onclick="closeTestModal()">&times;</span>
+                    <div id="test-body">
+                        <h2 class="test-title">✈️ 나의 여행 스타일 찾기</h2>
+                        <div id="test-question-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="test-progress"></div>
+                            </div>
+                            <h3 id="test-q-text">질문 텍스트</h3>
+                            <div class="test-options">
+                                <button class="test-opt-btn" onclick="nextTest(0)" id="opt-a">A 옵션</button>
+                                <button class="test-opt-btn" onclick="nextTest(1)" id="opt-b">B 옵션</button>
+                            </div>
+                        </div>
+                        <div id="test-result-container" class="hidden">
+                            <div class="result-icon" id="r-icon">🦁</div>
+                            <h3 id="r-title">당신은...</h3>
+                            <p id="r-desc">설명</p>
+                            <button class="restart-btn" onclick="restartTest()">다시 하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 1 -->
+            <section id="unit1" class="tab-content">
+                <!-- Hero Section -->
+                <section class="unit-hero u1-hero">
+                    <div class="hero-content">
+                        <h1 class="unit-title">여행과 우리</h1>
+                        <p class="unit-description">여행을 통해 발견하는 새로운 나!</p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="label">대상</span> <span class="value">고등학교 2학년</span>
+                            </div>
+                            <div class="stat-item"><span class="label">차시</span> <span class="value">1~3차시 (총
+                                    3회차)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Lesson Navigation -->
+                <section class="steps-nav-section">
+                    <div class="steps-scroll-container">
+                        <div class="steps-indicator-bar"></div>
+                        <ul id="unit1-lessons-list" class="steps-nav">
+                            <!-- Lessons will be injected by JS -->
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Lesson Content Section -->
+                <section class="content-section">
+                    <div class="container">
+                        <div class="step-header">
+                            <h2 id="unit1-lesson-title" class="current-step-title">로딩중...</h2>
+                            <p id="unit1-lesson-desc" class="current-step-desc"></p>
+                        </div>
+
+                        <div id="unit1-steps-grid" class="step-grid">
+                            <!-- Activity steps will be injected by JS -->
+                        </div>
+
+                        <!-- Activity Detail View (Hidden by default) -->
+                        <div id="unit1-activity-view" style="display:none;">
+                            <button class="back-btn" onclick="hideUnit1Activity()">← 단계 목록으로</button>
+                            <div id="unit1-activity-content">
+                                <!-- Content will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- UNIT 2 -->
+            <section id="unit2" class="tab-content">
+                <!-- Hero Section -->
+                <section class="unit-hero u2-hero">
+                    <div class="hero-content">
+                        <h1 class="unit-title"
+                            style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); -webkit-background-clip: text; background-clip: text;">
+                            여행에서 만난 너</h1>
+                        <p class="unit-description">문화의 다름을 존중하고, 타인의 삶을 통해 나를 성찰하는 여정 <br><strong>#문화상대주의 #공감
+                                #편견깨기</strong></p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="label">대상</span> <span class="value">고등학교 2학년</span>
+                            </div>
+                            <div class="stat-item"><span class="label">차시</span> <span class="value">9단계 학습</span></div>
+                            <div class="stat-item"><span class="label">난이도</span> <span class="value">⭐⭐⭐</span></div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Lesson Navigation -->
+                <section class="steps-nav-section">
+                    <div class="steps-scroll-container" style="border-color: #74b9ff;">
+                        <div class="steps-indicator-bar" style="background: #74b9ff;"></div>
+                        <ul id="unit2-lessons-list" class="steps-nav">
+                            <!-- Lessons will be injected by JS -->
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Lesson Content Section -->
+                <section class="content-section" style="border-color: #74b9ff;">
+                    <div class="container">
+                        <div class="step-header">
+                            <h2 id="unit2-lesson-title" class="current-step-title" style="color: #0984e3;">로딩중...</h2>
+                            <p id="unit2-lesson-desc" class="current-step-desc"></p>
+                        </div>
+
+                        <div id="unit2-steps-grid" class="step-grid">
+                            <!-- Activity steps will be injected by JS -->
+                        </div>
+
+                        <!-- Activity Detail View -->
+                        <div id="unit2-activity-view" class="hidden">
+                            <button class="back-btn" onclick="hideUnitActivity('unit2')"
+                                style="border-color: #74b9ff; color: #0984e3;">← 단계 목록으로</button>
+                            <div id="unit2-activity-content">
+                                <!-- Content will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- UNIT 3 -->
+            <section id="unit3" class="tab-content">
+                <!-- Hero Section -->
+                <section class="unit-hero u3-hero">
+                    <div class="hero-content">
+                        <h1 class="unit-title"
+                            style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%); -webkit-background-clip: text; background-clip: text;">
+                            여행에서 만난 우리</h1>
+                        <p class="unit-description">여행 중 겪는 갈등과 화해를 통해 진정한 공동체의 의미를 배웁니다. <br><strong>#관계 #갈등해결 #협력
+                                #공동체</strong></p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="label">대상</span> <span class="value">고등학교 2학년</span>
+                            </div>
+                            <div class="stat-item"><span class="label">차시</span> <span class="value">9단계 학습</span></div>
+                            <div class="stat-item"><span class="label">난이도</span> <span class="value">⭐⭐⭐</span></div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Lesson Navigation -->
+                <section class="steps-nav-section">
+                    <div class="steps-scroll-container" style="border-color: #55efc4;">
+                        <div class="steps-indicator-bar" style="background: #55efc4;"></div>
+                        <ul id="unit3-lessons-list" class="steps-nav">
+                            <!-- Lessons will be injected by JS -->
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Lesson Content Section -->
+                <section class="content-section" style="border-color: #55efc4;">
+                    <div class="container">
+                        <div class="step-header">
+                            <h2 id="unit3-lesson-title" class="current-step-title" style="color: #00b894;">로딩중...</h2>
+                            <p id="unit3-lesson-desc" class="current-step-desc"></p>
+                        </div>
+
+                        <div id="unit3-steps-grid" class="step-grid">
+                            <!-- Activity steps will be injected by JS -->
+                        </div>
+
+                        <!-- Activity Detail View -->
+                        <div id="unit3-activity-view" class="hidden">
+                            <button class="back-btn" onclick="hideUnitActivity('unit3')"
+                                style="border-color: #55efc4; color: #00b894;">← 단계 목록으로</button>
+                            <div id="unit3-activity-content">
+                                <!-- Content will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- UNIT 4 -->
+            <section id="unit4" class="tab-content">
+                <!-- Hero Section -->
+                <section class="unit-hero u4-hero">
+                    <div class="hero-content">
+                        <h1 class="unit-title"
+                            style="background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); -webkit-background-clip: text; background-clip: text;">
+                            여행 이후의 '나'</h1>
+                        <p class="unit-description">여행의 기억을 기록하고 나만의 책으로 엮어냅니다. <br><strong>#기록 #출판 #성찰 #성장</strong></p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="label">대상</span> <span class="value">고등학교 2학년</span>
+                            </div>
+                            <div class="stat-item"><span class="label">차시</span> <span class="value">9단계 학습</span></div>
+                            <div class="stat-item"><span class="label">난이도</span> <span class="value">⭐⭐⭐⭐</span></div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Lesson Navigation -->
+                <section class="steps-nav-section">
+                    <div class="steps-scroll-container" style="border-color: #a29bfe;">
+                        <div class="steps-indicator-bar" style="background: #a29bfe;"></div>
+                        <ul id="unit4-lessons-list" class="steps-nav">
+                            <!-- Lessons will be injected by JS -->
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Lesson Content Section -->
+                <section class="content-section" style="border-color: #a29bfe;">
+                    <div class="container">
+                        <div class="step-header">
+                            <h2 id="unit4-lesson-title" class="current-step-title" style="color: #6c5ce7;">로딩중...</h2>
+                            <p id="unit4-lesson-desc" class="current-step-desc"></p>
+                        </div>
+
+                        <div id="unit4-steps-grid" class="step-grid">
+                            <!-- Activity steps will be injected by JS -->
+                        </div>
+
+                        <!-- Activity Detail View -->
+                        <div id="unit4-activity-view" class="hidden">
+                            <button class="back-btn" onclick="hideUnitActivity('unit4')"
+                                style="border-color: #a29bfe; color: #6c5ce7;">← 단계 목록으로</button>
+                            <div id="unit4-activity-content">
+                                <!-- Content will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- UNIT 5: LEARNING MATERIAL ROOM -->
+            <section id="unit5" class="tab-content">
+                <!-- Hero Section -->
+                <section class="unit-hero u5-hero" style="border-color: #4b6584;">
+                    <div class="hero-content">
+                        <h1 class="unit-title"
+                            style="background: linear-gradient(135deg, #a5b1c2 0%, #4b6584 100%); -webkit-background-clip: text; background-clip: text;">
+                            학습 자료실</h1>
+                        <p class="unit-description">지리 및 여행 관련 영상 학습 자료를 탐색해 보세요. <br><strong>#영상학습 #지리 #여행
+                                #자료실</strong></p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="label">대상</span> <span class="value">고등학교 2학년</span>
+                            </div>
+                            <div class="stat-item"><span class="label">유형</span> <span class="value">영상 학습 센터</span>
+                            </div>
+                            <div class="stat-item"><span class="label">자료</span> <span class="value">풍부함 📚</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section class="content-section" style="border-color: #4b6584;">
+                    <div class="container">
+                        <div class="step-header">
+                            <h2 class="current-step-title" style="color: #4b6584;">학습 자료 목록</h2>
+                            <p class="current-step-desc">원하는 카테고리의 자료를 선택하여 학습을 시작하세요.</p>
+                        </div>
+
+                        <div id="unit5-content" class="lesson-steps">
+                            <!-- Data will be injected by unit5_functions.js -->
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <!-- CHATBOT WIDGET -->
+    <div class="chatbot-widget">
+        <button class="chat-toggle" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></button>
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header"><span>🤖 여행 멘토 봇</span> <span class="close-chat"
+                    onclick="toggleChat()">&times;</span></div>
+            <div class="chat-body" id="chat-body">
+                <div class="msg bot-msg">궁금한 점이 있나요? 언제든 물어보세요! 😊</div>
+            </div>
+            <div class="chat-input-area"><input type="text" id="chat-input" placeholder="..."
+                    onkeypress="handleEnter(event)"><button onclick="sendMsg()"><i
+                        class="fa-solid fa-paper-plane"></i></button></div>
+        </div>
+    </div>
+
+    <!-- WORKSHEET MODAL -->
+    <div id="worksheet-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeWorksheet()">&times;</span>
+            <div id="worksheet-body">
+                <!-- Dynamic Content -->
+            </div>
+            <div class="modal-footer">
+                <button class="save-msg-btn" onclick="alert('작성 내용이 임시 저장되었습니다!')">저장하기 💾</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="unit1_functions.js"></script>
+    <script src="unit5_functions.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
